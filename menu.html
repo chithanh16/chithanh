@@ -10,15 +10,16 @@
 <body>
 
 <header class="navbar">
-    <div class="logo">Lakafé VN</div>
-    <nav>
+  <div class="menu-toggle">&#9776;</div>
+  <div class="logo">Lakafé VN</div>
+
+  <nav class="nav-menu">
     <a href="index.html">Trang chủ</a>
     <a href="#" id="about-link">Giới thiệu</a>
     <a href="menu.html">Sản phẩm</a>
     <a href="khuyenmai.html">Khuyến mãi</a>
+  </nav>
 </header>
-</header>
-
 <!-- ẢNH MENU -->
 <div class="menu-container">
     <img src="menu.png" alt="Menu Lakafé VN" class="menu-img" id="menuImg">
@@ -112,6 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightbox = document.getElementById('lightbox');
     menuImg.addEventListener('click', () => lightbox.style.display = 'flex');
     lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+</script>
+<script>
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-menu").classList.toggle("active");
+});
+
 </script>
 </body>
 </html>

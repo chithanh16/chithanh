@@ -487,8 +487,9 @@ body {
 /* MOBILE STYLE */
 @media (max-width: 767px) {
   .navbar {
-    height: 120px; /* cao hơn để chứa logo */
+    height: 100px; /* cao hơn để chứa logo */
     justify-content: center;
+    justify-content: center; /* căn giữa theo chiều ngang */
     position: relative;
     padding: 15px 20px;
   }
@@ -517,7 +518,7 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    background: black;
+    background: white(245, 229, 229);
   }
 
   .nav-menu.active {

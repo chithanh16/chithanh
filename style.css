@@ -479,68 +479,54 @@ body {
     max-height: 95%;
     border-radius: 10px;
 }
-/* Mặc định ẩn menu */
-.nav-menu {
+/* Ẩn nút menu trên desktop */
+.menu-toggle {
   display: none;
 }
 
-/* Khi active mới hiện */
-.nav-menu.active {
-  display: flex;
-  flex-direction: column;
-  background: black;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-}
-
-/* Chữ Lakafé VN cùng dòng */
-.logo {
-  white-space: nowrap;
-}
-
-/* Mobile button */
-.menu-toggle {
-  font-size: 26px;
-  color: #8B4513;
-  cursor: pointer;
-  margin-right: auto;
-}
-
-/* Desktop hiển thị menu bình thường */
-@media (min-width: 768px) {
-  .nav-menu {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-  }
-  .menu-toggle {
-    display: none;
-  }
-}
+/* MOBILE STYLE */
 @media (max-width: 767px) {
   .navbar {
-    justify-content: center; /* Căn giữa nội dung */
-    padding: 20px; /* Giảm padding cho gọn */
+    justify-content: center;
+    position: relative;
+    padding: 15px 20px;
   }
 
   .navbar .logo {
-    margin-left: 0; /* Bỏ margin trái */
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
   }
 
-  .navbar nav a {
-    left: 0; /* Bỏ dịch trái */
-  }
-}
-@media (min-width: 768px) {
-  .nav-menu {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-  }
   .menu-toggle {
+    display: block;
+    position: absolute;
+    left: 15px;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .nav-menu {
     display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: black;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: white;
   }
 }
+

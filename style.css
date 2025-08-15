@@ -507,7 +507,7 @@ body {
     position: absolute;
     left: 15px;
     font-size: 26px;
-    color: white;
+    color:#F5E6D3;
     cursor: pointer;
   }
 
@@ -532,4 +532,27 @@ body {
     color: white;
   }
 }
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        height: 60px;
+        background-color: black; /* giữ màu nền */
+    }
+
+    .navbar .menu-btn {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .navbar .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+    }
+}
+
 

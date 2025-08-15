@@ -479,65 +479,43 @@ body {
     max-height: 95%;
     border-radius: 10px;
 }
-/* Mặc định ẩn nút toggle trên PC */
-.menu-toggle {
+/* Mặc định ẩn menu */
+.nav-menu {
   display: none;
-  font-size: 28px;
-  cursor: pointer;
 }
 
-/* Khi màn hình nhỏ hơn 768px thì hiển thị toggle */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .navbar nav {
-    display: none;
-    flex-direction: column;
-    background: black;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .navbar nav.active {
-    display: flex;
-  }
-
-  .navbar nav a {
-    padding: 10px;
-    left: 0; /* bỏ dịch chuyển */
-    text-align: center;
-  }
-}
-/* Header container */
-.navbar {
+/* Khi active mới hiện */
+.nav-menu.active {
   display: flex;
-  align-items: center;       /* Căn giữa theo chiều dọc */
-  justify-content: center;   /* Đưa nội dung vào giữa */
+  flex-direction: column;
   background: black;
-  padding: 10px 20px;
-  position: relative;
-}
-
-/* Logo chữ Lakafé VN */
-.navbar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  white-space: nowrap; /* Không cho xuống hàng */
-}
-
-/* Nút menu */
-.menu-toggle {
   position: absolute;
-  left: 20px;               /* Đưa sang trái */
-  font-size: 26px;
-  color: #8B4513;           /* Màu nâu */
-  cursor: pointer;
+  top: 100%;
+  left: 0;
+  width: 100%;
 }
 
+/* Chữ Lakafé VN cùng dòng */
+.logo {
+  white-space: nowrap;
+}
 
+/* Mobile button */
+.menu-toggle {
+  font-size: 26px;
+  color: #8B4513;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+/* Desktop hiển thị menu bình thường */
+@media (min-width: 768px) {
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}

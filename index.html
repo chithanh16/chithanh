@@ -10,9 +10,8 @@
 <body>
 
 <header class="navbar">
-  <div class="menu-toggle">☰</div>
+  <div class="menu-toggle">&#9776;</div>
   <div class="logo">Lakafé VN</div>
-</header>
 
     <nav>
     <a href="index.html">Trang chủ</a>
@@ -130,16 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-<script>
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".navbar nav");
+<sconst menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
-    });
+menuToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
   }
-</script>
+</sconst>
 
 
 

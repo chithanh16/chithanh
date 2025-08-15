@@ -13,12 +13,13 @@
   <div class="menu-toggle">&#9776;</div>
   <div class="logo">Lakafé VN</div>
 
-    <nav>
+  <!-- Thêm class nav-menu ở đây -->
+  <nav class="nav-menu">
     <a href="index.html">Trang chủ</a>
     <a href="#" id="about-link">Giới thiệu</a>
     <a href="menu.html">Sản phẩm</a>
     <a href="khuyenmai.html">Khuyến mãi</a>
-    </nav>
+  </nav>
 </header>
 
 <!-- Banner 3 ảnh -->
@@ -129,15 +130,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-<sconst menuToggle = document.querySelector(".menu-toggle");
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
 
 menuToggle.addEventListener("click", () => {
   navMenu.classList.toggle("active");
 });
-  }
-</sconst>
-
+</script>
 
 
 

@@ -519,3 +519,28 @@ body {
     display: none;
   }
 }
+@media (max-width: 767px) {
+  .navbar {
+    justify-content: center; /* Căn giữa nội dung */
+    padding: 20px; /* Giảm padding cho gọn */
+  }
+
+  .navbar .logo {
+    margin-left: 0; /* Bỏ margin trái */
+    text-align: center;
+  }
+
+  .navbar nav a {
+    left: 0; /* Bỏ dịch trái */
+  }
+}
+@media (min-width: 768px) {
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}

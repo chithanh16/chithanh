@@ -11,6 +11,9 @@
 
 <header class="navbar">
     <div class="logo">Lakafé VN</div>
+    <!-- Nút toggle menu (chỉ hiện trên mobile) -->
+<div class="menu-toggle">☰</div>
+
     <nav>
     <a href="index.html">Trang chủ</a>
     <a href="#" id="about-link">Giới thiệu</a>
@@ -101,12 +104,8 @@
         </svg>
     </a>
 </p>
-
-
   </div>
 </div>
-
-
 <script>
 let slides = document.querySelectorAll('.banner img');
 let current = 0;
@@ -131,6 +130,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".navbar nav");
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  }
+</script>
+
 
 
 

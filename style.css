@@ -13,6 +13,7 @@ body {
 }
 
 /* HEADER */
+
 .navbar {
     position: relative; /* hoặc bỏ luôn */
     top: 0;
@@ -477,5 +478,39 @@ body {
     max-width: 95%;
     max-height: 95%;
     border-radius: 10px;
+}
+/* Mặc định ẩn nút toggle trên PC */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Khi màn hình nhỏ hơn 768px thì hiển thị toggle */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar nav {
+    display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .navbar nav.active {
+    display: flex;
+  }
+
+  .navbar nav a {
+    padding: 10px;
+    left: 0; /* bỏ dịch chuyển */
+    text-align: center;
+  }
 }
 

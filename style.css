@@ -507,7 +507,7 @@ body {
     position: absolute;
     left: 15px;
     font-size: 26px;
-    color:#F5E6D3;
+    color:white;
     cursor: pointer;
   }
 
@@ -518,7 +518,7 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    background: white(245, 229, 229);
+    background: #FFF4CC(245, 229, 229);
   }
 
   .nav-menu.active {

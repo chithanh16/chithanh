@@ -513,4 +513,31 @@ body {
     text-align: center;
   }
 }
+/* Header container */
+.navbar {
+  display: flex;
+  align-items: center;       /* Căn giữa theo chiều dọc */
+  justify-content: center;   /* Đưa nội dung vào giữa */
+  background: black;
+  padding: 10px 20px;
+  position: relative;
+}
+
+/* Logo chữ Lakafé VN */
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap; /* Không cho xuống hàng */
+}
+
+/* Nút menu */
+.menu-toggle {
+  position: absolute;
+  left: 20px;               /* Đưa sang trái */
+  font-size: 26px;
+  color: #8B4513;           /* Màu nâu */
+  cursor: pointer;
+}
+
 

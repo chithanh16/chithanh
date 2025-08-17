@@ -548,6 +548,74 @@ body {
     display: none !important; /* Ẩn sidebar + overlay + nút ☰ trên desktop */
   }
 }
+/* Mobile header fix */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* header nổi trên */
+  }
+
+  .navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* căn giữa ngang */
+    white-space: nowrap; /* không xuống dòng */
+  }
+
+  .menu-toggle {
+    position: absolute;
+    left: 15px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Sidebar nổi trên header */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #c68642;
+    transition: left 0.3s ease;
+    padding-top: 60px; /* tránh đè lên header */
+    z-index: 2000; /* sidebar cao hơn header */
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1500; /* nằm dưới sidebar nhưng trên nội dung */
+  }
+
+  .sidebar.active { left: 0; }
+  .overlay.active { display: block; }
+}
+
 
 
 

@@ -10,9 +10,10 @@
 <body>
 
 <header class="navbar">
-  <div class="menu-toggle">&#9776;</div>
+  <button class="menu-btn" onclick="openMenu()">☰</button>
   <div class="logo">Lakafé VN</div>
 
+  <!-- Menu ngang (desktop) -->
   <nav class="nav-menu">
     <a href="index.html">Trang chủ</a>
     <a href="#" id="about-link">Giới thiệu</a>
@@ -20,6 +21,16 @@
     <a href="khuyenmai.html">Khuyến mãi</a>
   </nav>
 </header>
+
+<!-- Sidebar (mobile) -->
+<div id="sidebar" class="sidebar">
+  <a href="index.html">Trang chủ</a>
+  <a href="#" id="about-link-mobile">Giới thiệu</a>
+  <a href="menu.html">Sản phẩm</a>
+  <a href="khuyenmai.html">Khuyến mãi</a>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
 <!-- Banner 3 ảnh -->
 <div class="banner">
@@ -130,9 +141,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <script>
-document.querySelector(".menu-toggle").addEventListener("click", () => {
-  document.querySelector(".nav-menu").classList.toggle("active");
-});
+function openMenu() {
+  document.getElementById("sidebar").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
+}
+function closeMenu() {
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
 </script>
+
 </body>
 </html>

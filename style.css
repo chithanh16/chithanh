@@ -484,75 +484,70 @@ body {
   display: none;
 }
 
-/* MOBILE STYLE */
-@media (max-width: 767px) {
-  .navbar {
-    height: 100px; /* cao hơn để chứa logo */
-    justify-content: center;
-    justify-content: center; /* căn giữa theo chiều ngang */
-    position: relative;
-    padding: 15px 20px;
-  }
+/* SIDEBAR MOBILE */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* ẩn */
+  width: 250px;
+  height: 100%;
+  background: #c18a5b;
+  padding-top: 60px;
+  transition: 0.3s;
+  z-index: 1001;
+}
 
-  .navbar .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 22px;
-    white-space: nowrap; /* không xuống dòng */
-  }
+.sidebar.active {
+  left: 0;
+}
 
-  .menu-toggle {
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.sidebar a:hover {
+  background: #8b5e3c;
+}
+
+/* Overlay khi mở menu */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+.overlay.active {
+  display: block;
+}
+
+/* Mobile: hiện nút ☰, ẩn menu ngang */
+@media (max-width: 768px) {
+  .navbar nav {
+    display: none; /* ẩn link ngang */
+  }
+  .menu-btn {
     display: block;
-    position: absolute;
-    left: 15px;
     font-size: 26px;
-    color:white;
+    color: white;
+    background: none;
+    border: none;
     cursor: pointer;
   }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #FFF4CC(245, 229, 229);
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-menu a {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    color: white;
+}
+/* Chỉ cho mobile dùng sidebar */
+@media (min-width: 769px) {
+  .sidebar,
+  .overlay,
+  .menu-btn {
+    display: none !important; /* Ẩn sidebar + overlay + nút ☰ trên desktop */
   }
 }
-@media (max-width: 768px) {
-    .navbar {
-        position: relative;
-        height: 60px;
-        background-color: black; /* giữ màu nền */
-    }
 
-    .navbar .menu-btn {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .navbar .logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
-    }
-}
 
 

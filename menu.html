@@ -10,16 +10,30 @@
 <body>
 
 <header class="navbar">
-  <div class="menu-toggle">&#9776;</div>
+  <button class="menu-btn" onclick="openMenu()">☰</button>
   <div class="logo">Lakafé VN</div>
 
+  <!-- Menu ngang (desktop) -->
   <nav class="nav-menu">
     <a href="index.html">Trang chủ</a>
-    <a href="#" id="about-link">Giới thiệu</a>
+<a href="#" id="aboutDesktop">Giới thiệu</a>
     <a href="menu.html">Sản phẩm</a>
     <a href="khuyenmai.html">Khuyến mãi</a>
   </nav>
 </header>
+
+<!-- Sidebar (mobile) -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" onclick="closeMenu()">&times;</button>
+  <a href="index.html">Trang chủ</a>
+<a href="#" id="aboutMobile">Giới thiệu</a>
+  <a href="menu.html">Sản phẩm</a>
+  <a href="khuyenmai.html">Khuyến mãi</a>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+
 <!-- ẢNH MENU -->
 <div class="menu-container">
     <img src="menu.png" alt="Menu Lakafé VN" class="menu-img" id="menuImg">
@@ -64,7 +78,7 @@
 <!-- GIỚI THIỆU (MODAL) -->
 <div id="aboutOverlay">
   <div class="about-modal">
-    <button class="close-btn" aria-label="Đóng">&times;</button>
+<button class="about-close close-btn" aria-label="Đóng">&times;</button>
     <h2><i class="fas fa-info-circle"></i> Giới thiệu Lakafé VN</h2>
     <p>Chào mừng bạn đến với <strong>Lakafé VN</strong> – nơi hội tụ hương vị trà sữa...</p>
     <p><i class="fas fa-map-marker-alt"></i><strong>Địa chỉ:</strong><br>209/C3 Ấp Đức Long 3, Xã Gia Tân 2, Huyện Thống Nhất, Tỉnh Đồng Nai, Vietnam</p>
@@ -119,6 +133,120 @@ document.querySelector(".menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav-menu").classList.toggle("active");
 });
 
+</script>
+<script>
+ // Lấy button mở menu
+const menuBtn = document.querySelector(".menu-btn");
+// Lấy sidebar
+const sidebar = document.querySelector(".sidebar");
+// Lấy button đóng menu
+const closeBtn = document.querySelector(".close-btn");
+
+// Khi bấm menu => mở sidebar
+menuBtn.addEventListener("click", () => {
+  sidebar.classList.add("active");
+});
+
+// Khi bấm nút X => đóng sidebar
+closeBtn.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+});
+
+// Khi click ra ngoài => đóng sidebar
+document.addEventListener("click", (e) => {
+  if (
+    sidebar.classList.contains("active") && // chỉ check khi sidebar mở
+    !sidebar.contains(e.target) &&          // click không nằm trong sidebar
+    !menuBtn.contains(e.target)             // click không nằm trong nút mở menu
+  ) {
+    sidebar.classList.remove("active");
+  }
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const aboutLinks = document.querySelectorAll(".about-link"); // lấy tất cả link "Giới thiệu"
+  const overlay = document.getElementById("aboutOverlay");
+  const closeBtn = overlay.querySelector(".close-btn");
+
+  // Lặp qua từng link để gán sự kiện mở popup
+  aboutLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      overlay.style.display = "flex";
+
+      // Nếu đang ở mobile thì ẩn sidebar khi mở popup
+      document.getElementById("sidebar").classList.remove("active");
+    });
+  });
+
+  // Nút X để đóng
+  closeBtn.addEventListener("click", () => overlay.style.display = "none");
+
+  // Click ra ngoài modal để đóng
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) overlay.style.display = "none";
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // ELEMENTS
+  const menuBtn     = document.querySelector(".menu-btn");
+  const sidebar     = document.getElementById("sidebar");
+  const pageOverlay = document.getElementById("overlay");
+
+  const aboutOverlay   = document.getElementById("aboutOverlay");
+  const aboutCloseBtn  = document.querySelector("#aboutOverlay .close-btn");
+
+  const aboutDesktop = document.getElementById("aboutDesktop"); // link desktop
+  const aboutMobile  = document.getElementById("aboutMobile");  // link sidebar
+
+  // MENU: open/close
+  function openMenu() {
+    sidebar.classList.add("active");
+    pageOverlay.classList.add("active");
+  }
+  function closeMenu() {
+    sidebar.classList.remove("active");
+    pageOverlay.classList.remove("active");
+  }
+
+  // để HTML inline onclick dùng được
+  window.openMenu  = openMenu;
+  window.closeMenu = closeMenu;
+
+  // Click ngoài để đóng sidebar
+  document.addEventListener("click", (e) => {
+    if (
+      sidebar.classList.contains("active") &&
+      !sidebar.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  // ABOUT: open/close
+  function openAbout(e) {
+    if (e) e.preventDefault();
+    closeMenu(); // khi bấm "Giới thiệu" trong sidebar -> đóng sidebar
+    aboutOverlay.style.display = "flex";
+  }
+  function closeAbout() {
+    aboutOverlay.style.display = "none";
+  }
+
+  if (aboutDesktop) aboutDesktop.addEventListener("click", openAbout);
+  if (aboutMobile)  aboutMobile.addEventListener("click", openAbout);
+
+  if (aboutCloseBtn) aboutCloseBtn.addEventListener("click", closeAbout);
+  if (aboutOverlay) {
+    aboutOverlay.addEventListener("click", (e) => {
+      if (e.target === aboutOverlay) closeAbout(); // bấm nền đen để tắt
+    });
+  }
+});
 </script>
 </body>
 </html>

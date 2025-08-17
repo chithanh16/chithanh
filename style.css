@@ -12,18 +12,16 @@ body {
     color: #111;
 }
 
-/* HEADER */
-
 .navbar {
-    position: relative; /* hoặc bỏ luôn */
+    position: relative;
     top: 0;
     width: 100%;
     background: black;
     color: white;
-    padding: 40px 50px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* logo trái - menu phải */
     z-index: 9999;
 }
 
@@ -31,18 +29,20 @@ body {
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 1px;
-    margin-left: 120px; /* logo sẽ dịch sang phải */
+    margin-left: 0; /* bỏ margin thừa */
+}
 
+.navbar nav {
+    display: flex;
+    gap: 20px; /* khoảng cách đều giữa các link */
 }
 
 .navbar nav a {
     color: white;
-    margin: 0 10px; /* giảm khoảng cách giữa các link */
     text-decoration: none;
     font-size: 20px;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     position: relative;
-    left: -120px; /* dịch toàn bộ link sang trái */
 }
 
 .navbar nav a:hover {
@@ -215,10 +215,6 @@ body {
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(2.5); opacity: 0; }
 }
-
-
-
-
 /* POPUP GIỚI THIỆU */
 #aboutOverlay {
     display: none;
@@ -555,31 +551,45 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
     background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* header nổi trên */
+    z-index: 1000;
+    position: relative;  /* quan trọng để logo căn giữa */
   }
 
-  .navbar .logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
+  .navbar .menu-btn {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* căn giữa ngang */
-    white-space: nowrap; /* không xuống dòng */
-  }
-
-  .menu-toggle {
-    position: absolute;
-    left: 15px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 24px;
+    background: none;
+    border: none;
     color: white;
     cursor: pointer;
   }
+
+  .navbar .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* căn giữa cả ngang và dọc */
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+}
+
+  /* Ẩn menu ngang trên mobile */
+  .nav-menu {
+    display: none;
+  }
+
 
   /* Sidebar nổi trên header */
   .sidebar {
@@ -614,7 +624,49 @@ body {
 
   .sidebar.active { left: 0; }
   .overlay.active { display: block; }
+ .sidebar {
+  position: fixed;   /* rất quan trọng */
+  top: 0;
+  left: -250px;      /* ẩn mặc định */
+  width: 250px;
+  height: 100%;
+  background: #c18b5c; /* màu nền */
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 10000;
 }
+
+/* Nút đóng (ô chữ nhật chìa ra ngoài) */
+.sidebar .close-btn {
+  position: absolute;
+  top: 20%;                /* giữa dọc */
+  right: -50px;            /* thò ra ngoài */
+  transform: translateY(-50%);
+  width: 50px;
+  height: 40px;
+  background: #c18b5c;     /* cùng màu sidebar */
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar .close-btn:hover {
+  background: #a67348;
+}
+/* Mặc định ẩn nút đóng */
+.sidebar .close-btn {
+  display: none;
+}
+
+/* Khi sidebar mở thì hiện nút đóng */
+.sidebar.active .close-btn {
+  display: flex; /* hoặc block cũng được */
+}
+
 
 
 

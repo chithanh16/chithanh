@@ -33,11 +33,16 @@
 
 <div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
-<!-- Banner 3 ảnh -->
-<div class="banner">
-    <img src="banner1.png" alt="banner1" class="small">
+<!-- Banner desktop (giữ nguyên 3 ảnh) -->
+<div class="banner-desktop">
+    <img src="banner1.png" alt="banner1" class="small"> 
     <img src="bstmatcha.png" alt="bstmatcha" class="big">
     <img src="banner2.png" alt="banner2" class="small">
+</div>
+
+<!-- Banner mobile (chỉ hiển thị 1 ảnh, tự đổi sau 3s) -->
+<div class="banner-mobile">
+    <img src="banner1.png" alt="banner mobile" id="mobileBanner">
 </div>
 
 <!-- SẢN PHẨM -->
@@ -264,6 +269,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileBanner = document.getElementById("mobileBanner");
+  const bannerImages = ["banner1.png", "bstmatcha.png", "banner2.png"];
+  let index = 0;
+
+  function changeBanner() {
+    index = (index + 1) % bannerImages.length;
+    mobileBanner.src = bannerImages[index];
+  }
+
+  if (window.innerWidth <= 768) {
+    setInterval(changeBanner, 3000);
+  }
+});
+</script>
+
 
 </body>
 </html>
